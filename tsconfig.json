@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "CommonJS",
+        "outDir": "./build",
+        "rootDir": "./src",
+        "sourceMap": true,
+        "strict": true,
+        "target": "ES5"
+    }
+}
