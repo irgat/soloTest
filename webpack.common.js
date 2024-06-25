@@ -1,6 +1,7 @@
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -9,6 +10,22 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Solo Test',
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'assets/images/splash.png',
+                    to: 'images/[name][ext]',
+                },
+                {
+                    from: 'assets/spritesheets/*.png',
+                    to: 'images/[name][ext]',
+                },
+                {
+                    from: 'assets/spritesheets/*.json',
+                    to: 'data/[name][ext]',
+                },
+            ],
         }),
         new webpack.HotModuleReplacementPlugin(),
     ],

@@ -29,3 +29,17 @@ $ yarn build
 ```
 $ yarn start
 ```
+
+---
+
+## Asset Management
+
+### Prerequisites:
+
+- [texturepacker](https://www.codeandweb.com/texturepacker)
+
+### How to update spritesheets:
+
+- Update the desired assets in `assets/images` folder
+- Open the relevant `tps` files in `assets/spritesheets` folder with **Texture Packer**
+- Publish the spritesheets

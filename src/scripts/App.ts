@@ -14,7 +14,7 @@ class App {
     private app: Application;
     private settings: Settings = {
         background: {
-            color: '#00FF00',
+            color: '#333333',
         },
         dimensions: {
             width: 1024,
