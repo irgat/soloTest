@@ -50,7 +50,7 @@
         <key>dxtCompressionMode</key>
         <enum type="SettingsBase::DxtCompressionMode">DXT_PERCEPTUAL</enum>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">PngQuantLow</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -169,7 +169,7 @@
             <key>defaultPivotPoint</key>
             <point_f>0,0</point_f>
             <key>writePivotPoints</key>
-            <false/>
+            <true/>
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
@@ -311,6 +311,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../images/common/1px_black.png</key>
+            <key type="filename">../images/common/1px_transparent.png</key>
+            <key type="filename">../images/common/1px_white.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>0,0,1,1</rect>
+                <key>scale9Paddings</key>
+                <rect>0,0,1,1</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/results/1.png</key>
             <key type="filename">../images/results/2.png</key>
             <key type="filename">../images/results/3.png</key>
@@ -336,14 +353,15 @@
             </struct>
         </map>
         <key>fileLists</key>
-        <map type="spritesheetMap">
+        <map type="SpriteSheetMap">
             <key>default</key>
-            <struct type="spritesheet">
+            <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
                     <filename>../images/board</filename>
                     <filename>../images/buttons</filename>
                     <filename>../images/results</filename>
+                    <filename>../images/common</filename>
                 </array>
             </struct>
         </map>

@@ -14,6 +14,10 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
+                    from: 'assets/fonts/*.*',
+                    to: 'fonts/[name][ext]',
+                },
+                {
                     from: 'assets/images/splash.png',
                     to: 'images/[name][ext]',
                 },
