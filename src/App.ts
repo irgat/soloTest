@@ -1,7 +1,9 @@
 import { Application } from 'pixi.js';
+import Splash from './ui/common/Splash';
 
 class App {
     private app: Application;
+    private splashUrl: string = "images/splash.png";
     private settings: Settings = {
         background: {
             color: '#333333',
@@ -22,7 +24,18 @@ class App {
         const settings = _settings != null ? _settings : this.settings;
 
         this.app = new Application();
-        this.initApp(settings);
+        this.init(settings);
+    }
+
+    /**
+     * 
+     * @param {Settings} _settings - App settings
+     */
+    private init = async (_settings: Settings) => {
+        console.log("App().init()");
+
+        await this.initApp(_settings);
+        await this.initSplash(this.splashUrl);
     }
 
     /**
@@ -40,6 +53,15 @@ class App {
 
         document.body.appendChild(this.app.canvas);
     }
+
+    private initSplash = async (_url: string) => {
+        console.log("App().initSplash() || ", _url);
+
+        const splash = new Splash(_url);
+
+        this.app.stage.addChild(splash);
+    }
+
 }
 
 const app = new App();
