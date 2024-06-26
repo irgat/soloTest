@@ -1,15 +1,5 @@
 import { Application } from 'pixi.js';
 
-interface Settings {
-    background: {
-        color: string,
-    },
-    dimensions: {
-        width: number,
-        height: number,
-    },
-}
-
 class App {
     private app: Application;
     private settings: Settings = {
@@ -27,9 +17,9 @@ class App {
      * @param {Settings} [_settings] - Optional app settings to override the default settings
      */
     public constructor(_settings?: Settings) {
-        console.log("App().constructor()");
+        console.log(`App().constructor() || created with ${_settings != null ? "custom settings" : "default settings"}`);
 
-        let settings = _settings != null ? _settings : this.settings;
+        const settings = _settings != null ? _settings : this.settings;
 
         this.app = new Application();
         this.initApp(settings);
