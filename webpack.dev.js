@@ -17,6 +17,10 @@ module.exports = merge(common, {
                 publicPath: 'images',
             },
             {
+                directory: path.join(__dirname, 'assets/manifest.json'),
+                publicPath: './',
+            },
+            {
                 directory: path.join(__dirname, 'assets/spritesheets'),
                 publicPath: 'images',
             },

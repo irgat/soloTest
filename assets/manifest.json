@@ -1,0 +1,17 @@
+{
+    "bundles": [
+        {
+            "name": "splash",
+            "assets": [
+                {
+                    "alias": "splash",
+                    "src": "images/splash.png"
+                },
+                {
+                    "alias": "TallTrees",
+                    "src": "fonts/TallTrees.otf"
+                }
+            ]
+        }
+    ]
+}

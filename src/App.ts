@@ -1,41 +1,31 @@
-import { Application } from 'pixi.js';
+import { Application, Assets } from 'pixi.js';
+import { Settings, DEFAULT_SETTINGS, Bundles } from './types/App.types';
 import Splash from './ui/common/Splash';
 
 class App {
     private app: Application;
-    private splashUrl: string = "images/splash.png";
-    private settings: Settings = {
-        background: {
-            color: '#333333',
-        },
-        dimensions: {
-            width: 1024,
-            height: 600,
-        },
-    };
+    private settings: Settings = DEFAULT_SETTINGS;
 
     /**
      * 
      * @param {Settings} [_settings] - Optional app settings to override the default settings
      */
     public constructor(_settings?: Settings) {
-        console.log(`App().constructor() || created with ${_settings != null ? "custom settings" : "default settings"}`);
+        console.log(`App().constructor() || created with ${_settings ? "custom settings" : "default settings"}`);
 
-        const settings = _settings != null ? _settings : this.settings;
+        // override default settings
+        if (_settings) this.settings = _settings;
 
         this.app = new Application();
-        this.init(settings);
+        this.init();
     }
 
-    /**
-     * 
-     * @param {Settings} _settings - App settings
-     */
-    private init = async (_settings: Settings) => {
+    private init = async () => {
         console.log("App().init()");
 
-        await this.initApp(_settings);
-        await this.initSplash(this.splashUrl);
+        await this.initApp(this.settings);
+        await this.loadAssets(this.settings.manifest);
+        await this.initSplash();
     }
 
     /**
@@ -54,11 +44,17 @@ class App {
         document.body.appendChild(this.app.canvas);
     }
 
-    private initSplash = async (_url: string) => {
-        console.log("App().initSplash() || ", _url);
+    private loadAssets = async (_url: string) => {
+        console.log("App().loadAssets() || ", _url);
 
-        const splash = new Splash(_url);
+        await Assets.init({ manifest: _url });
+        Assets.backgroundLoadBundle([Bundles.Splash]);
+    }
 
+    private initSplash = () => {
+        console.log("App().initSplash()");
+
+        const splash = new Splash();
         this.app.stage.addChild(splash);
     }
 

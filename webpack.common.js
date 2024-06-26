@@ -22,6 +22,10 @@ module.exports = {
                     to: 'images/[name][ext]',
                 },
                 {
+                    from: 'assets/manifest.json',
+                    to: '[name][ext]',
+                },
+                {
                     from: 'assets/spritesheets/*.png',
                     to: 'images/[name][ext]',
                 },
