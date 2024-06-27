@@ -4,7 +4,7 @@ import Splash from './ui/common/Splash';
 
 class App {
     private app: Application;
-    private settings: Settings = DEFAULT_SETTINGS;
+    private settings: Settings;
 
     /**
      * 
@@ -14,9 +14,8 @@ class App {
         console.log(`App().constructor() || created with ${_settings ? "custom settings" : "default settings"}`);
 
         // override default settings
-        if (_settings) this.settings = _settings;
+        this.settings = _settings ? _settings : DEFAULT_SETTINGS;
 
-        this.app = new Application();
         this.init();
     }
 
@@ -35,6 +34,8 @@ class App {
     private initApp = async (_settings: Settings) => {
         console.log("App().initApp()");
 
+        this.app = new Application();
+
         await this.app.init({
             background: _settings.background.color,
             width: _settings.dimensions.width,
@@ -48,7 +49,7 @@ class App {
         console.log("App().loadAssets() || ", _url);
 
         await Assets.init({ manifest: _url });
-        Assets.backgroundLoadBundle([Bundles.Splash]);
+        Assets.backgroundLoadBundle(Bundles.InitialAssets);
     }
 
     private initSplash = () => {

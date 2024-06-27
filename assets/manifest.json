@@ -1,15 +1,32 @@
 {
     "bundles": [
         {
-            "name": "splash",
+            "name": "initialAssets",
             "assets": [
+                {
+                    "alias": "MonolineScript",
+                    "src": "fonts/MonolineScript.otf"
+                },
                 {
                     "alias": "splash",
                     "src": "images/splash.png"
-                },
+                }
+            ]
+        },
+        {
+            "name": "gameAssets",
+            "assets": [
                 {
                     "alias": "TallTrees",
                     "src": "fonts/TallTrees.otf"
+                },
+                {
+                    "alias": "bg",
+                    "src": "images/bg.json"
+                },
+                {
+                    "alias": "ui",
+                    "src": "images/ui.json"
                 }
             ]
         }

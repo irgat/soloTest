@@ -26,13 +26,9 @@ module.exports = {
                     to: '[name][ext]',
                 },
                 {
-                    from: 'assets/spritesheets/*.png',
+                    from: 'assets/spriteSheets/*.{png,json}',
                     to: 'images/[name][ext]',
-                },
-                {
-                    from: 'assets/spritesheets/*.json',
-                    to: 'data/[name][ext]',
-                },
+                }
             ],
         }),
         new webpack.HotModuleReplacementPlugin(),

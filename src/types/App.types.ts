@@ -24,10 +24,12 @@ export const DEFAULT_SETTINGS: Settings = {
 
 // manifest.json
 export enum Bundles {
-    Splash = 'splash',
+    InitialAssets = 'initialAssets',
+    GameAssets = 'gameAssets',
 }
 
 export enum FontFamily {
+    MonolineScript = 'MonolineScript',
     TallTrees = 'TallTrees',
 }
 // manifest.json
