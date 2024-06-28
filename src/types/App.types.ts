@@ -24,7 +24,8 @@ export const DEFAULT_SETTINGS: Settings = {
 
 // manifest.json
 export enum Bundles {
-    InitialAssets = 'initialAssets',
+    Preloader = 'preloader',
+    SplashPage = 'splashPage',
     GameAssets = 'gameAssets',
 }
 

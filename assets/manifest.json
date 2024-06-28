@@ -1,14 +1,19 @@
 {
     "bundles": [
         {
-            "name": "initialAssets",
+            "name": "preloader",
             "assets": [
                 {
                     "alias": "MonolineScript",
                     "src": "fonts/MonolineScript.otf"
-                },
+                }
+            ]
+        },
+        {
+            "name": "splashPage",
+            "assets": [
                 {
-                    "alias": "splash",
+                    "alias": "splashPage",
                     "src": "images/splash.png"
                 }
             ]

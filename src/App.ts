@@ -1,33 +1,42 @@
-import { Application, Assets } from 'pixi.js';
-import { Settings, DEFAULT_SETTINGS, Bundles } from './types/App.types';
-import Splash from './ui/common/Splash';
+import { AppConfig } from './common/AppConfig';
+import { Application } from 'pixi.js';
+import { Settings } from './types/App.types';
+import { SplashPage } from './ui/pages/SplashPage';
 
+/**
+ * The entry point.
+ * 
+ * The constructor initialises the AppConfig -to store the app setting globally, then the app.
+ */
 class App {
     private app: Application;
-    private settings: Settings;
 
     /**
      * 
-     * @param {Settings} [_settings] - Optional app settings to override the default settings
+     * @param {Settings} [_settings] - Optional app settings to override default settings.
      */
     public constructor(_settings?: Settings) {
         console.log(`App().constructor() || created with ${_settings ? "custom settings" : "default settings"}`);
 
         // override default settings
-        this.settings = _settings ? _settings : DEFAULT_SETTINGS;
+        let appConfig = AppConfig.getInstance({ settings: _settings });
 
-        this.init();
-    }
-
-    private init = async () => {
-        console.log("App().init()");
-
-        await this.initApp(this.settings);
-        await this.loadAssets(this.settings.manifest);
-        await this.initSplash();
+        this.init(appConfig.getSettings());
     }
 
     /**
+     * 
+     * @param {Settings} _settings - Settings to create the Pixi app
+     */
+    private init = async (_settings: Settings) => {
+        console.log("App().init()");
+
+        await this.initApp(_settings);
+        await this.initPreloader(_settings.manifest);
+    }
+
+    /**
+     * Creates the Pixi app.
      * 
      * @param {Settings} _settings - App settings
      */
@@ -45,20 +54,17 @@ class App {
         document.body.appendChild(this.app.canvas);
     }
 
-    private loadAssets = async (_url: string) => {
-        console.log("App().loadAssets() || ", _url);
+    /**
+     * Creates the splash page to load the assets.
+     * 
+     * @param {string} _url - URL to manifest
+     */
+    private initPreloader = async (_url: string) => {
+        console.log("App().initPreloader()");
 
-        await Assets.init({ manifest: _url });
-        Assets.backgroundLoadBundle(Bundles.InitialAssets);
-    }
-
-    private initSplash = () => {
-        console.log("App().initSplash()");
-
-        const splash = new Splash();
+        const splash = new SplashPage(_url);
         this.app.stage.addChild(splash);
     }
-
 }
 
 const app = new App();
