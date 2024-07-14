@@ -2,6 +2,7 @@ import { AppConfig } from '../../common/AppConfig';
 import { Assets, Container, Sprite, Text } from 'pixi.js';
 import { Bundles, Settings } from '../../types/App.types';
 import { FontStyle } from '../../common/Fonts';
+import { Events } from '../../common/Events';
 
 /**
  * Initial page to be displayed until the asset bundles are loaded. Progress information is represented by a preloader.
@@ -22,6 +23,8 @@ export class SplashPage extends Container {
     }
 
     /**
+     * Displays the preloader copy immediately and awaits the manifest, then starts loading the assets asyncreniously.
+     * The background is displayed as soon as it's loaded.
      * 
      * @param {string} _url - URL to manifest
      */
@@ -65,6 +68,10 @@ export class SplashPage extends Container {
         console.log("SplashPage().onProgress() || ", _progress);
 
         this.progressLabel.text = Math.round(_progress * 100) + '%';
+
+        if (_progress === 1) {
+            this.emit(Events.LOADED);
+        }
     }
 
     private initBackground = async () => {
@@ -73,7 +80,7 @@ export class SplashPage extends Container {
         const texture = await Assets.loadBundle(Bundles.SplashPage);
 
         if (!texture) {
-            console.log('Failed to load texture');
+            console.log("Failed to load texture");
             return
         }
 

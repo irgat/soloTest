@@ -2,6 +2,8 @@ import { AppConfig } from './common/AppConfig';
 import { Application } from 'pixi.js';
 import { Settings } from './types/App.types';
 import { SplashPage } from './ui/pages/SplashPage';
+import { Events } from './common/Events';
+
 
 /**
  * The entry point.
@@ -63,7 +65,12 @@ class App {
         console.log("App().initPreloader()");
 
         const splash = new SplashPage(_url);
+        splash.on(Events.LOADED, this.onLoaded);
         this.app.stage.addChild(splash);
+    }
+
+    private onLoaded() {
+        console.log("App().onLoaded()");
     }
 }
 
