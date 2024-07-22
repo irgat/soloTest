@@ -1,4 +1,5 @@
-import { DEFAULT_SETTINGS, Settings } from "../types/App.types";
+import { Config, Settings } from "../App.types";
+import { DEFAULT_MANIFEST, DEFAULT_SETTINGS } from "../App.consts";
 
 /**
  * A singleton class to manage global properties.
@@ -6,57 +7,50 @@ import { DEFAULT_SETTINGS, Settings } from "../types/App.types";
  * If app settings aren't provided during initialisation, default settings are applied.
  */
 export class AppConfig {
-    private static instance: AppConfig;
-    private config: { [key: string]: any; };
+    private static _instance: AppConfig;
+    private _config: Config;
 
     /**
      * Private constructor to avoid multiple instances.
      * 
      * @param {object} [_config] - Configuration object
      */
-    private constructor(_config: { [key: string]: any }) {
-        console.log("AppConfig().constructor() || _config", _config);
+    private constructor(_config: Config) {
+        console.log('AppConfig().constructor() || _config', _config);
 
-        this.config = { ..._config };
+        this._config = _config;
     }
 
     /**
      * Public method to initialise AppConfig.
      * 
-     * If app settings aren't provided during initialisation, default settings are injected to the configuration.
-     * If it's already been initialised, the new properties are injected to the configuration. The existing properties are updated as well.
+     * If app manifest or settings aren't provided during initialisation, default values are injected to the configuration.
      * 
      * @param {object} [_config] - Optional configuration
      * @returns The instance of AppConfig
      */
-    public static getInstance(_config?: { [key: string]: any }): AppConfig {
-        console.log("AppConfig().getInstance()");
+    public static getInstance(_config?: Partial<Config>): AppConfig {
+        console.log('AppConfig().getInstance()');
 
-        if (!AppConfig.instance) {
-            // inject the settings if not provided during initialisation
-            if (!_config || !_config.settings) {
-                _config = { ...{ settings: DEFAULT_SETTINGS } };
-            }
-
-            AppConfig.instance = new AppConfig(_config);
-        } else if (_config) {
-            // inject the additional props
-            this.instance.config = { ..._config };
+        if (!this._instance) {
+            this._instance = new AppConfig({
+                manifest: _config?.manifest || DEFAULT_MANIFEST,
+                settings: _config?.settings || DEFAULT_SETTINGS,
+            });
         }
 
-        return AppConfig.instance;
+        return this._instance;
     }
 
     /**
-     * Public method to access global properties
+     * Public method to access app config
      * 
-     * @param {string} _key - Target key to access the desired property
-     * @returns Desired property
+     * @returns App config
      */
-    public getConfig(_key: string): any {
-        console.log(`AppConfig().getConfig() || ${_key} = ${this.config[_key]}`);
+    public getConfig(): Config {
+        console.log('AppConfig().getConfig() || this._config = ', this._config);
 
-        return this.config[_key];
+        return this._config;
     }
 
     /**
@@ -65,8 +59,8 @@ export class AppConfig {
      * @returns App settings
      */
     public getSettings(): Settings {
-        console.log("AppConfig().getSettings() || this._config['settings'] = ", this.getConfig("settings"));
+        console.log('AppConfig().getSettings() || this._config.settings = ', this._config.settings);
 
-        return this.getConfig("settings");
+        return this._config.settings;
     }
 }

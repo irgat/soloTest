@@ -1,9 +1,10 @@
-import { AppConfig } from './common/AppConfig';
-import { Application } from 'pixi.js';
-import { Settings } from './types/App.types';
-import { SplashPage } from './ui/pages/SplashPage';
-import { Events } from './common/Events';
-
+import { AppConfig } from "./common/AppConfig";
+import { Application } from "pixi.js";
+import { Config, Settings } from "./App.types";
+import { DEFAULT_MANIFEST } from "./App.consts";
+import { Events } from "./common/Events";
+import { HomePage } from "./ui/pages/HomePage";
+import { SplashPage } from "./ui/pages/SplashPage";
 
 /**
  * The entry point.
@@ -15,26 +16,26 @@ class App {
 
     /**
      * 
-     * @param {Settings} [_settings] - Optional app settings to override default settings.
+     * @param {Settings} [_config] - Optional app settings to override default settings.
      */
-    public constructor(_settings?: Settings) {
         console.log(`App().constructor() || created with ${_settings ? "custom settings" : "default settings"}`);
+    public constructor(_config?: Config) {
 
         // override default settings
-        let appConfig = AppConfig.getInstance({ settings: _settings });
+        let appConfig = AppConfig.getInstance(_config);
 
-        this.init(appConfig.getSettings());
+        this.init(appConfig.getConfig());
     }
 
     /**
      * 
-     * @param {Settings} _settings - Settings to create the Pixi app
+     * @param {Config} _config - Configuration to create the Pixi app
      */
-    private init = async (_settings: Settings) => {
         console.log("App().init()");
+    private init = async (_config: Config) => {
 
-        await this.initApp(_settings);
-        await this.initPreloader(_settings.manifest);
+        await this.initApp(_config.settings);
+        await this.initPreloader(_config.manifest);
     }
 
     /**
@@ -74,4 +75,18 @@ class App {
     }
 }
 
-const app = new App();
+// todo: load the config from an external file
+// Create the app
+const app = new App({
+    manifest: DEFAULT_MANIFEST,
+    settings: {
+        background: {
+            color: '#333333',
+            url: '',
+        },
+        dimensions: {
+            width: 1024,
+            height: 600,
+        },
+    }
+});

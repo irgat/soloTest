@@ -1,8 +1,8 @@
 import { AppConfig } from '../../common/AppConfig';
 import { Assets, Container, Sprite, Text } from 'pixi.js';
-import { Bundles, Settings } from '../../types/App.types';
-import { FontStyle } from '../../common/Fonts';
+import { Bundles } from '../../App.types';
 import { Events } from '../../common/Events';
+import { FontStyle } from '../../common/Fonts';
 
 /**
  * Initial page to be displayed until the asset bundles are loaded. Progress information is represented by a preloader.
@@ -39,12 +39,12 @@ export class SplashPage extends Container {
     private initPreloader = () => {
         console.log("SplashPage().initPreloader()");
 
-        let settings: Settings = AppConfig.getInstance().getSettings();
+        let config = AppConfig.getInstance().getConfig();
 
         this.progressLabel = new Text({ style: FontStyle.HEADER_WHITE });
         this.progressLabel.anchor.set(.5, .5);
-        this.progressLabel.x = settings.dimensions.width * .5;
-        this.progressLabel.y = settings.dimensions.height - this.progressLabel.height * 2;
+        this.progressLabel.x = config.settings.dimensions.width * .5;
+        this.progressLabel.y = config.settings.dimensions.height - this.progressLabel.height * 2;
 
         this.addChild(this.progressLabel);
     }

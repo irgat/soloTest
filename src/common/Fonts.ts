@@ -1,4 +1,4 @@
-import { FontFamily } from "../types/App.types";
+import { FontFamily } from "../App.types";
 
 export const FontStyle = {
     HEADER_WHITE: {
