@@ -16,7 +16,7 @@ export class SplashPage extends Container {
      * @param {string} _url - URL to manifest
      */
     public constructor(_url: string) {
-        console.log("SplashPage().constructor()");
+        console.log('SplashPage().constructor()');
         super();
 
         this.init(_url);
@@ -29,7 +29,7 @@ export class SplashPage extends Container {
      * @param {string} _url - URL to manifest
      */
     private init = async (_url: string) => {
-        console.log("SplashPage().init()");
+        console.log('SplashPage().init()');
 
         this.initPreloader();
         await this.loadAssets(_url);
@@ -37,7 +37,7 @@ export class SplashPage extends Container {
     }
 
     private initPreloader = () => {
-        console.log("SplashPage().initPreloader()");
+        console.log('SplashPage().initPreloader()');
 
         let config = AppConfig.getInstance().getConfig();
 
@@ -54,7 +54,7 @@ export class SplashPage extends Container {
      * @param {string} _url - URL to manifest
      */
     private loadAssets = async (_url: string) => {
-        console.log("SplashPage().loadAssets()");
+        console.log('SplashPage().loadAssets()');
 
         await Assets.init({ manifest: _url });
         Assets.loadBundle([Bundles.Preloader, Bundles.SplashPage, Bundles.GameAssets], this.onProgress);
@@ -65,7 +65,7 @@ export class SplashPage extends Container {
      * @param {number} _progress - 0 to 1
      */
     private onProgress = (_progress: number) => {
-        console.log("SplashPage().onProgress() || ", _progress);
+        console.log('SplashPage().onProgress() || ', _progress);
 
         this.progressLabel.text = Math.round(_progress * 100) + '%';
 
@@ -75,12 +75,12 @@ export class SplashPage extends Container {
     }
 
     private initBackground = async () => {
-        console.log("SplashPage().initBackground()");
+        console.log('SplashPage().initBackground()');
 
         const texture = await Assets.loadBundle(Bundles.SplashPage);
 
         if (!texture) {
-            console.log("Failed to load texture");
+            console.log('Failed to load texture');
             return
         }
 

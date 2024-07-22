@@ -18,8 +18,8 @@ class App {
      * 
      * @param {Settings} [_config] - Optional app settings to override default settings.
      */
-        console.log(`App().constructor() || created with ${_settings ? "custom settings" : "default settings"}`);
     public constructor(_config?: Config) {
+        console.log(`App().constructor() || created with ${_config ? 'custom settings' : 'default settings'}`);
 
         // override default settings
         let appConfig = AppConfig.getInstance(_config);
@@ -31,8 +31,8 @@ class App {
      * 
      * @param {Config} _config - Configuration to create the Pixi app
      */
-        console.log("App().init()");
     private init = async (_config: Config) => {
+        console.log('App().init()');
 
         await this.initApp(_config.settings);
         await this.initPreloader(_config.manifest);
@@ -44,7 +44,7 @@ class App {
      * @param {Settings} _settings - App settings
      */
     private initApp = async (_settings: Settings) => {
-        console.log("App().initApp()");
+        console.log('App().initApp()');
 
         this.app = new Application();
 
@@ -63,7 +63,7 @@ class App {
      * @param {string} _url - URL to manifest
      */
     private initPreloader = async (_url: string) => {
-        console.log("App().initPreloader()");
+        console.log('App().initPreloader()');
 
         const splash = new SplashPage(_url);
         splash.on(Events.LOADED, this.onLoaded);
@@ -71,7 +71,7 @@ class App {
     }
 
     private onLoaded() {
-        console.log("App().onLoaded()");
+        console.log('App().onLoaded()');
     }
 }
 
