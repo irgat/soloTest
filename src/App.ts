@@ -1,6 +1,6 @@
 import { AppConfig } from "./common/AppConfig";
-import { Application } from "pixi.js";
-import { Config, Settings } from "./App.types";
+import { Application, ApplicationOptions } from "pixi.js";
+import { Config } from "./App.types";
 import { DEFAULT_MANIFEST } from "./App.consts";
 import { Events } from "./common/Events";
 import { HomePage } from "./ui/pages/HomePage";
@@ -16,12 +16,12 @@ class App {
 
     /**
      * 
-     * @param {Settings} [_config] - Optional app settings to override default settings.
+     * @param {Config} [_config] - Optional app configuration to override default settings.
      */
     public constructor(_config?: Config) {
-        console.log(`App().constructor() || created with ${_config ? 'custom settings' : 'default settings'}`);
+        console.log(`App().constructor() || created with ${_config ? 'custom config' : 'default config'}`);
 
-        // override default settings
+        // override default config
         let appConfig = AppConfig.getInstance(_config);
 
         this.init(appConfig.getConfig());
@@ -41,18 +41,14 @@ class App {
     /**
      * Creates the Pixi app.
      * 
-     * @param {Settings} _settings - App settings
+     * @param {ApplicationOptions} _settings - App settings
      */
-    private initApp = async (_settings: Settings) => {
+    private initApp = async (_settings: Partial<ApplicationOptions>) => {
         console.log('App().initApp()');
 
         this.app = new Application();
 
-        await this.app.init({
-            background: _settings.background.color,
-            width: _settings.dimensions.width,
-            height: _settings.dimensions.height,
-        });
+        await this.app.init(_settings);
 
         document.body.appendChild(this.app.canvas);
     }
@@ -80,13 +76,8 @@ class App {
 const app = new App({
     manifest: DEFAULT_MANIFEST,
     settings: {
-        background: {
-            color: '#333333',
-            url: '',
-        },
-        dimensions: {
-            width: 1024,
-            height: 600,
-        },
+        background: '#333333',
+        width: 1024,
+        height: 600,
     }
 });

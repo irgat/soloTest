@@ -1,17 +1,8 @@
+import { ApplicationOptions } from "pixi.js";
+
 export interface Config {
     manifest: string,
-    settings: Settings,
-}
-
-export interface Settings {
-    background: {
-        color: string,
-        url: string,
-    },
-    dimensions: {
-        width: number,
-        height: number,
-    },
+    settings: Partial<ApplicationOptions>,
 }
 
 // manifest.json

@@ -1,4 +1,5 @@
-import { Config, Settings } from "../App.types";
+import { ApplicationOptions } from "pixi.js";
+import { Config} from "../App.types";
 import { DEFAULT_MANIFEST, DEFAULT_SETTINGS } from "../App.consts";
 
 /**
@@ -13,7 +14,7 @@ export class AppConfig {
     /**
      * Private constructor to avoid multiple instances.
      * 
-     * @param {object} [_config] - Configuration object
+     * @param {Config} [_config] - Configuration object
      */
     private constructor(_config: Config) {
         console.log('AppConfig().constructor() || _config', _config);
@@ -26,7 +27,7 @@ export class AppConfig {
      * 
      * If app manifest or settings aren't provided during initialisation, default values are injected to the configuration.
      * 
-     * @param {object} [_config] - Optional configuration
+     * @param {Config} [_config] - Optional configuration
      * @returns The instance of AppConfig
      */
     public static getInstance(_config?: Partial<Config>): AppConfig {
@@ -58,7 +59,7 @@ export class AppConfig {
      * 
      * @returns App settings
      */
-    public getSettings(): Settings {
+    public getSettings(): Partial<ApplicationOptions> {
         console.log('AppConfig().getSettings() || this._config.settings = ', this._config.settings);
 
         return this._config.settings;
