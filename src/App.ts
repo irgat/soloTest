@@ -3,7 +3,6 @@ import { Application, ApplicationOptions } from "pixi.js";
 import { Config } from "./App.types";
 import { DEFAULT_MANIFEST } from "./App.consts";
 import { Events } from "./common/Events";
-import { HomePage } from "./ui/pages/HomePage";
 import { SplashPage } from "./ui/pages/SplashPage";
 
 /**
@@ -22,7 +21,7 @@ class App {
         console.log(`App().constructor() || created with ${config ? 'custom config' : 'default config'}`);
 
         // override default config
-        let appConfig = AppConfig.getInstance(config);
+        const appConfig = AppConfig.getInstance(config);
 
         this.init(appConfig.getConfig());
     }

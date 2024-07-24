@@ -1,5 +1,5 @@
 import { AppConfig } from '../../common/AppConfig';
-import { Assets, Container, Sprite, Text } from 'pixi.js';
+import { Assets, Sprite, Text } from 'pixi.js';
 import { Bundles } from '../../App.types';
 import { Events } from '../../common/Events';
 import { FontStyle } from '../../common/Fonts';
@@ -39,12 +39,12 @@ export class SplashPage extends Container {
     private initPreloader = () => {
         console.log('SplashPage().initPreloader()');
 
-        let settings = AppConfig.getInstance().getSettings();
+        const { width, height } = AppConfig.getInstance().getSettings()
 
         this.progressLabel = new Text({ style: FontStyle.HEADER_WHITE });
         this.progressLabel.anchor.set(.5, .5);
-        this.progressLabel.x = (settings.width || 1) * .5;
-        this.progressLabel.y = (settings.height || 0) - this.progressLabel.height * 2;
+        this.progressLabel.x = (width || 1) * .5;
+        this.progressLabel.y = (height || 0) - this.progressLabel.height * 2;
 
         this.addChild(this.progressLabel);
     }
