@@ -8,18 +8,18 @@ import { DEFAULT_MANIFEST, DEFAULT_SETTINGS } from "../App.consts";
  * If app settings aren't provided during initialisation, default settings are applied.
  */
 export class AppConfig {
-    private static _instance: AppConfig;
-    private _config: Config;
+    private static instance: AppConfig;
+    private config: Config;
 
     /**
      * Private constructor to avoid multiple instances.
      * 
-     * @param {Config} [_config] - Configuration object
+     * @param {Config} [config] - Configuration object
      */
-    private constructor(_config: Config) {
-        console.log('AppConfig().constructor() || _config', _config);
+    private constructor(config: Config) {
+        console.log('AppConfig().constructor() || config', config);
 
-        this._config = _config;
+        this.config = config;
     }
 
     /**
@@ -27,20 +27,20 @@ export class AppConfig {
      * 
      * If app manifest or settings aren't provided during initialisation, default values are injected to the configuration.
      * 
-     * @param {Config} [_config] - Optional configuration
+     * @param {Config} [config] - Optional configuration
      * @returns The instance of AppConfig
      */
-    public static getInstance(_config?: Partial<Config>): AppConfig {
+    public static getInstance(config?: Partial<Config>): AppConfig {
         console.log('AppConfig().getInstance()');
 
-        if (!this._instance) {
-            this._instance = new AppConfig({
-                manifest: _config?.manifest || DEFAULT_MANIFEST,
-                settings: _config?.settings || DEFAULT_SETTINGS,
+        if (!this.instance) {
+            this.instance = new AppConfig({
+                manifest: config?.manifest || DEFAULT_MANIFEST,
+                settings: config?.settings || DEFAULT_SETTINGS,
             });
         }
 
-        return this._instance;
+        return this.instance;
     }
 
     /**
@@ -49,9 +49,9 @@ export class AppConfig {
      * @returns App config
      */
     public getConfig(): Config {
-        console.log('AppConfig().getConfig() || this._config = ', this._config);
+        console.log('AppConfig().getConfig() || this.config = ', this.config);
 
-        return this._config;
+        return this.config;
     }
 
     /**
@@ -60,8 +60,8 @@ export class AppConfig {
      * @returns App settings
      */
     public getSettings(): Partial<ApplicationOptions> {
-        console.log('AppConfig().getSettings() || this._config.settings = ', this._config.settings);
+        console.log('AppConfig().getSettings() || this.config.settings = ', this.config.settings);
 
-        return this._config.settings;
+        return this.config.settings;
     }
 }

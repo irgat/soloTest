@@ -16,39 +16,39 @@ class App {
 
     /**
      * 
-     * @param {Config} [_config] - Optional app configuration to override default settings.
+     * @param {Config} [config] - Optional app configuration to override default settings.
      */
-    public constructor(_config?: Config) {
-        console.log(`App().constructor() || created with ${_config ? 'custom config' : 'default config'}`);
+    public constructor(config?: Config) {
+        console.log(`App().constructor() || created with ${config ? 'custom config' : 'default config'}`);
 
         // override default config
-        let appConfig = AppConfig.getInstance(_config);
+        let appConfig = AppConfig.getInstance(config);
 
         this.init(appConfig.getConfig());
     }
 
     /**
      * 
-     * @param {Config} _config - Configuration to create the Pixi app
+     * @param {Config} config - Configuration to create the Pixi app
      */
-    private init = async (_config: Config) => {
+    private init = async (config: Config) => {
         console.log('App().init()');
 
-        await this.initApp(_config.settings);
-        await this.initPreloader(_config.manifest);
+        await this.initApp(config.settings);
+        await this.initPreloader(config.manifest);
     }
 
     /**
      * Creates the Pixi app.
      * 
-     * @param {ApplicationOptions} _settings - App settings
+     * @param {ApplicationOptions} settings - App settings
      */
-    private initApp = async (_settings: Partial<ApplicationOptions>) => {
+    private initApp = async (settings: Partial<ApplicationOptions>) => {
         console.log('App().initApp()');
 
         this.app = new Application();
 
-        await this.app.init(_settings);
+        await this.app.init(settings);
 
         document.body.appendChild(this.app.canvas);
     }
@@ -56,12 +56,12 @@ class App {
     /**
      * Creates the splash page to load the assets.
      * 
-     * @param {string} _url - URL to manifest
+     * @param {string} url - URL to manifest
      */
-    private initPreloader = async (_url: string) => {
+    private initPreloader = async (url: string) => {
         console.log('App().initPreloader()');
 
-        const splash = new SplashPage(_url);
+        const splash = new SplashPage(url);
         splash.on(Events.LOADED, this.onLoaded);
         this.app.stage.addChild(splash);
     }
