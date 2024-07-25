@@ -194,9 +194,9 @@
             </struct>
         </map>
         <key>fileLists</key>
-        <map type="spritesheetMap">
+        <map type="SpriteSheetMap">
             <key>default</key>
-            <struct type="spritesheet">
+            <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
                     <filename>../images/pages</filename>

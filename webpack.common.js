@@ -14,17 +14,21 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
+                    from: 'assets/fonts/*.*',
+                    to: 'fonts/[name][ext]',
+                },
+                {
                     from: 'assets/images/splash.png',
                     to: 'images/[name][ext]',
                 },
                 {
-                    from: 'assets/spritesheets/*.png',
-                    to: 'images/[name][ext]',
+                    from: 'assets/manifest.json',
+                    to: '[name][ext]',
                 },
                 {
-                    from: 'assets/spritesheets/*.json',
-                    to: 'data/[name][ext]',
-                },
+                    from: 'assets/spriteSheets/*.{png,json}',
+                    to: 'images/[name][ext]',
+                }
             ],
         }),
         new webpack.HotModuleReplacementPlugin(),

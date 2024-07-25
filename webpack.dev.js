@@ -9,8 +9,16 @@ module.exports = merge(common, {
         hot: true,
         static: [
             {
+                directory: path.join(__dirname, 'assets/fonts'),
+                publicPath: 'fonts',
+            },
+            {
                 directory: path.join(__dirname, 'assets/images'),
                 publicPath: 'images',
+            },
+            {
+                directory: path.join(__dirname, 'assets/manifest.json'),
+                publicPath: './',
             },
             {
                 directory: path.join(__dirname, 'assets/spritesheets'),

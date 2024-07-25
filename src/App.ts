@@ -1,55 +1,82 @@
-import { Application } from 'pixi.js';
+import { AppConfig } from "./common/AppConfig";
+import { Application, ApplicationOptions } from "pixi.js";
+import { Config } from "./App.types";
+import { DEFAULT_MANIFEST } from "./App.consts";
+import { Events } from "./common/Events";
+import { SplashPage } from "./ui/pages/SplashPage";
 
-interface Settings {
-    background: {
-        color: string,
-    },
-    dimensions: {
-        width: number,
-        height: number,
-    },
-}
-
+/**
+ * The entry point.
+ * 
+ * The constructor initialises the AppConfig -to store the app setting globally, then the app.
+ */
 class App {
     private app: Application;
-    private settings: Settings = {
-        background: {
-            color: '#333333',
-        },
-        dimensions: {
-            width: 1024,
-            height: 600,
-        },
-    };
 
     /**
      * 
-     * @param {Settings} [_settings] - Optional app settings to override the default settings
+     * @param {Config} [config] - Optional app configuration to override default settings.
      */
-    public constructor(_settings?: Settings) {
-        console.log("App().constructor()");
+    public constructor(config?: Config) {
+        console.log(`App().constructor() || created with ${config ? 'custom config' : 'default config'}`);
 
-        let settings = _settings != null ? _settings : this.settings;
+        // override default config
+        const appConfig = AppConfig.getInstance(config);
 
-        this.app = new Application();
-        this.initApp(settings);
+        this.init(appConfig.getConfig());
     }
 
     /**
      * 
-     * @param {Settings} _settings - App settings
+     * @param {Config} config - Configuration to create the Pixi app
      */
-    private initApp = async (_settings: Settings) => {
-        console.log("App().initApp()");
+    private init = async (config: Config) => {
+        console.log('App().init()');
 
-        await this.app.init({
-            background: _settings.background.color,
-            width: _settings.dimensions.width,
-            height: _settings.dimensions.height,
-        });
+        await this.initApp(config.settings);
+        await this.initPreloader(config.manifest);
+    }
+
+    /**
+     * Creates the Pixi app.
+     * 
+     * @param {ApplicationOptions} settings - App settings
+     */
+    private initApp = async (settings: Partial<ApplicationOptions>) => {
+        console.log('App().initApp()');
+
+        this.app = new Application();
+
+        await this.app.init(settings);
 
         document.body.appendChild(this.app.canvas);
     }
+
+    /**
+     * Creates the splash page to load the assets.
+     * 
+     * @param {string} url - URL to manifest
+     */
+    private initPreloader = async (url: string) => {
+        console.log('App().initPreloader()');
+
+        const splash = new SplashPage(url);
+        splash.on(Events.LOADED, this.onLoaded);
+        this.app.stage.addChild(splash);
+    }
+
+    private onLoaded() {
+        console.log('App().onLoaded()');
+    }
 }
 
-const app = new App();
+// todo: load the config from an external file
+// Create the app
+const app = new App({
+    manifest: DEFAULT_MANIFEST,
+    settings: {
+        background: '#333333',
+        width: 1024,
+        height: 600,
+    }
+});
