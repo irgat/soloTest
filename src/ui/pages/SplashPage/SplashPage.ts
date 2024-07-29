@@ -1,13 +1,15 @@
-import { AppConfig } from '../../common/AppConfig';
-import { Assets, Container, Sprite, Text } from 'pixi.js';
-import { Bundles } from '../../App.types';
-import { Events } from '../../common/Events';
-import { FontStyle } from '../../common/Fonts';
+import { AppConfig } from '../../../common/AppConfig';
+import { Assets, Sprite, Text } from 'pixi.js';
+import { BasePage } from '../BasePage';
+import { Bundles } from '../../../App.types';
+import { Events } from '../../../common/Events';
+import { FontStyle } from '../../../common/Fonts';
+import { PageIds } from '../Page.types';
 
 /**
  * The initial page that is displayed until the asset bundles are loaded. Progress information is represented by a preloader.
  */
-export class SplashPage extends Container {
+export class SplashPage extends BasePage {
     private background: Sprite;
     private progressLabel: Text;
 
@@ -17,7 +19,7 @@ export class SplashPage extends Container {
      */
     public constructor(url: string) {
         console.log('SplashPage().constructor()');
-        super();
+        super(PageIds.SplashPage);
 
         this.init(url);
     }
@@ -42,7 +44,7 @@ export class SplashPage extends Container {
         const { width, height } = AppConfig.getInstance().getSettings()
 
         this.progressLabel = new Text({ style: FontStyle.HEADER_WHITE });
-        this.progressLabel.anchor.set(.5, .5);
+        this.progressLabel.anchor = .5;
         this.progressLabel.x = (width || 1) * .5;
         this.progressLabel.y = (height || 0) - this.progressLabel.height * 2;
 
@@ -71,6 +73,7 @@ export class SplashPage extends Container {
 
         if (progress === 1) {
             this.emit(Events.LOADED);
+            // this.emit(Events.LOADED, { payload: 'test' });
         }
     }
 
