@@ -46,6 +46,7 @@ export enum UiTextures {
     pawn = 'pawn.png',
     pawnHover = 'pawnHover.png',
     playButton_homePage = 'playButton_homePage.png',
+    playButton_homePage_hover = 'playButton_homePage_hover.png',
     point_1 = '1.png',
     point_2 = '2.png',
     point_3 = '3.png',

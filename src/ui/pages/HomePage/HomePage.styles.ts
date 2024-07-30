@@ -10,9 +10,8 @@ export const HomePageStyles = {
         hitArea: new Polygon([0, 100, 0, 210, 210, 0, 100, 0]),
     },
     playCTA: {
-        anchor: 0,
-        height: 49,
+        background: UiTextures.creditsButton_homePage,
+        backgroundHover: UiTextures.creditsButton_homePage_hover,
         position: new Point(442, 452),
-        width: 147,
     },
 }

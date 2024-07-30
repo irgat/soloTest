@@ -298,6 +298,7 @@
                 <false/>
             </struct>
             <key type="filename">../images/buttons/playButton_homePage.png</key>
+            <key type="filename">../images/buttons/playButton_homePage_hover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
