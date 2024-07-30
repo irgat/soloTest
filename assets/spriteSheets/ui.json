@@ -192,9 +192,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":147,"h":49},
 	"sourceSize": {"w":147,"h":49}
 },
+"playButton_homePage_hover.png":
+{
+	"frame": {"x":569,"y":1220,"w":147,"h":49},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":147,"h":49},
+	"sourceSize": {"w":147,"h":49}
+},
 "resultChartButton_gamePage.png":
 {
-	"frame": {"x":569,"y":1220,"w":140,"h":76},
+	"frame": {"x":716,"y":1220,"w":140,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":76},
@@ -207,6 +215,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1930,"h":1296},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f4a7d306ecbca213e40d3004ac1b7dc8:6d3a41d0b33e9d4780d1ff8855f6eecc:5b04aa198265472a3c5f56958d78e97b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:bce38c49d4c1af9739ea6dec1cc5d22d:85e3be276fa89ccd92667d6b98e207f5:5b04aa198265472a3c5f56958d78e97b$"
 }
 }
