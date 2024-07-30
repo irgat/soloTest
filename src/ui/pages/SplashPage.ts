@@ -1,5 +1,5 @@
 import { AppConfig } from '../../common/AppConfig';
-import { Assets, Sprite, Text } from 'pixi.js';
+import { Assets, Container, Sprite, Text } from 'pixi.js';
 import { Bundles } from '../../App.types';
 import { Events } from '../../common/Events';
 import { FontStyle } from '../../common/Fonts';
