@@ -14,7 +14,7 @@ export class AppConfig {
     /**
      * Private constructor to avoid multiple instances.
      * 
-     * @param {Config} [config] - Configuration object
+     * @param {Config} config - Configuration object
      */
     private constructor(config: Config) {
         console.log('AppConfig().constructor() || config', config);
