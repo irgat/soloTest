@@ -13,6 +13,7 @@ import { PageIds } from '../Page.types';
 export class HomePage extends BasePage {
     private background: Sprite;
     private creditsCTA: BaseButton;
+    private playCTA: BaseButton;
 
     public constructor() {
         console.log('HomePage().constructor()');
@@ -60,9 +61,24 @@ export class HomePage extends BasePage {
         this.creditsCTA = new BaseButton(creditsCTA_setup, creditsCTA_hitArea);
         this.creditsCTA.on(Events.MOUSE_CLICK, this.onCreditsCTASelected);
         this.addChild(this.creditsCTA);
+
+        // create play CTA
+        const playCTA_setup = {
+            default: uiTextures[UiTextures.playButton_homePage],
+            hover: uiTextures[UiTextures.playButton_homePage_hover],
+        }
+
+        this.playCTA = new BaseButton(playCTA_setup);
+        this.playCTA.position = HomePageStyles.playCTA.position;
+        this.playCTA.on(Events.MOUSE_CLICK, this.onPlayCTASelected);
+        this.addChild(this.playCTA);
     }
 
     private onCreditsCTASelected = () => {
         this.emit(Events.SELECTED, PageIds.CreditsPage);
+    }
+
+    private onPlayCTASelected = () => {
+        this.emit(Events.SELECTED, PageIds.GamePage);
     }
 }
