@@ -169,7 +169,7 @@
             <key>defaultPivotPoint</key>
             <point_f>0,0</point_f>
             <key>writePivotPoints</key>
-            <true/>
+            <false/>
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
@@ -219,6 +219,7 @@
                 <false/>
             </struct>
             <key type="filename">../images/buttons/backButton_creditsPage.png</key>
+            <key type="filename">../images/buttons/backButton_creditsPage_hover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -251,6 +252,7 @@
                 <false/>
             </struct>
             <key type="filename">../images/buttons/creditsButton_homePage.png</key>
+            <key type="filename">../images/buttons/creditsButton_homePage_hover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -297,6 +299,7 @@
                 <false/>
             </struct>
             <key type="filename">../images/buttons/playButton_homePage.png</key>
+            <key type="filename">../images/buttons/playButton_homePage_hover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
