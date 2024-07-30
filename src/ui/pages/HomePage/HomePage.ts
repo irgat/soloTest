@@ -1,7 +1,7 @@
 import { Assets, Sprite } from 'pixi.js';
 import { BaseButton } from '../../components/button/BaseButton';
 import { BasePage } from '../BasePage';
-import { BgTextures, Bundles, GameAssets, UiTextures } from '../../../App.types';
+import { Bundles, GameAssets } from '../../../App.types';
 import { Events } from '../../../common/Events';
 import { HomePageStyles } from './HomePage.styles';
 import { PageIds } from '../Page.types';
@@ -48,14 +48,14 @@ export class HomePage extends BasePage {
         }
 
         // create background
-        this.background = new Sprite(bgTextures[BgTextures.homePage]);
+        this.background = new Sprite(bgTextures[HomePageStyles.background]);
         this.addChild(this.background);
 
         // create credits CTA
         const creditsCTA_hitArea = HomePageStyles.creditsCTA.hitArea;
         const creditsCTA_setup = {
-            default: uiTextures[UiTextures.creditsButton_homePage],
-            hover: uiTextures[UiTextures.creditsButton_homePage_hover],
+            default: uiTextures[HomePageStyles.creditsCTA.background],
+            hover: uiTextures[HomePageStyles.creditsCTA.backgroundHover],
         }
 
         this.creditsCTA = new BaseButton(creditsCTA_setup, creditsCTA_hitArea);
@@ -64,8 +64,8 @@ export class HomePage extends BasePage {
 
         // create play CTA
         const playCTA_setup = {
-            default: uiTextures[UiTextures.playButton_homePage],
-            hover: uiTextures[UiTextures.playButton_homePage_hover],
+            default: uiTextures[HomePageStyles.playCTA.background],
+            hover: uiTextures[HomePageStyles.playCTA.backgroundHover],
         }
 
         this.playCTA = new BaseButton(playCTA_setup);
