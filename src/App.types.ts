@@ -38,6 +38,7 @@ export enum UiTextures {
     backButton_resultChartPage = 'backButton_resultChartPage.png',
     backButton_resultPage = 'backButton_resultPage.png',
     creditsButton_homePage = 'creditsButton_homePage.png',
+    creditsButton_homePage_hover = 'creditsButton_homePage_hover.png',
     gameOverButton_gamePage = 'gameOverButton_gamePage.png',
     halo = 'halo.png',
     newGameButton_gamePage = 'newGameButton_gamePage.png',

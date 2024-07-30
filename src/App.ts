@@ -4,8 +4,8 @@ import { Config } from "./App.types";
 import { DEFAULT_MANIFEST } from "./App.consts";
 import { Events } from "./common/Events";
 import { HomePage } from "./ui/pages/HomePage/HomePage";
-import { SplashPage } from "./ui/pages/SplashPage/SplashPage";
 import { PageManager } from "./ui/pages/PageManager";
+import { SplashPage } from "./ui/pages/SplashPage/SplashPage";
 
 /**
  * The entry point.
