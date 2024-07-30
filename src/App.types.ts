@@ -35,6 +35,7 @@ export enum BgTextures {
 // spriteSheets/ui.json
 export enum UiTextures {
     backButton_creditsPage = 'backButton_creditsPage.png',
+    backButton_creditsPage_hover = 'backButton_creditsPage_hover.png',
     backButton_resultChartPage = 'backButton_resultChartPage.png',
     backButton_resultPage = 'backButton_resultPage.png',
     creditsButton_homePage = 'creditsButton_homePage.png',

@@ -1,9 +1,11 @@
 import { AppConfig } from "./common/AppConfig";
 import { Application, ApplicationOptions } from "pixi.js";
 import { Config } from "./App.types";
+import { CreditsPage } from "./ui/pages/CreditsPage/CreditsPage";
 import { DEFAULT_MANIFEST } from "./App.consts";
 import { Events } from "./common/Events";
 import { HomePage } from "./ui/pages/HomePage/HomePage";
+import { PageId, PageIds } from "./ui/pages/Page.types";
 import { PageManager } from "./ui/pages/PageManager";
 import { SplashPage } from "./ui/pages/SplashPage/SplashPage";
 
@@ -74,9 +76,26 @@ class App {
 
     private onLoaded() {
         console.log('App().onLoaded()');
-        const homePage = new HomePage();
+        console.log('App().onLoaded() || ', this);
+        console.log('App().onLoaded() || ', arguments[0]);
 
-        this.pageManager.addPage(homePage);
+        this.showPage(PageIds.HomePage);
+    }
+
+    private showPage(pageId: PageId) {
+        console.log('App().showPage() || ', pageId);
+
+        if (pageId === PageIds.HomePage) {
+            const homePage = new HomePage();
+
+            homePage.on(Events.SELECTED, this.showPage, this);
+            this.pageManager.addPage(homePage);
+        } else if (pageId === PageIds.CreditsPage) {
+            const creditsPage = new CreditsPage();
+
+            creditsPage.on(Events.SELECTED, this.showPage, this);
+            this.pageManager.addPage(creditsPage);
+        }
     }
 }
 

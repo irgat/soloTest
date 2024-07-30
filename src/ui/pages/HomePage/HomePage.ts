@@ -75,6 +75,7 @@ export class HomePage extends BasePage {
     }
 
     private onCreditsCTASelected = () => {
+        this.creditsCTA.interactive = false;
         this.emit(Events.SELECTED, PageIds.CreditsPage);
     }
 

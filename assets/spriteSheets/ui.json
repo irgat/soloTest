@@ -104,9 +104,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":122,"h":41},
 	"sourceSize": {"w":122,"h":41}
 },
+"backButton_creditsPage_hover.png":
+{
+	"frame": {"x":122,"y":620,"w":122,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":122,"h":41},
+	"sourceSize": {"w":122,"h":41}
+},
 "backButton_resultChartPage.png":
 {
-	"frame": {"x":122,"y":620,"w":112,"h":61},
+	"frame": {"x":244,"y":620,"w":112,"h":61},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":61},
@@ -114,7 +122,7 @@
 },
 "backButton_resultPage.png":
 {
-	"frame": {"x":234,"y":620,"w":112,"h":61},
+	"frame": {"x":356,"y":620,"w":112,"h":61},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":61},
@@ -122,7 +130,7 @@
 },
 "creditsButton_homePage.png":
 {
-	"frame": {"x":346,"y":620,"w":211,"h":220},
+	"frame": {"x":468,"y":620,"w":211,"h":220},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":211,"h":220},
@@ -130,7 +138,7 @@
 },
 "creditsButton_homePage_hover.png":
 {
-	"frame": {"x":557,"y":620,"w":211,"h":220},
+	"frame": {"x":679,"y":620,"w":211,"h":220},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":211,"h":220},
@@ -138,7 +146,7 @@
 },
 "gameOverButton_gamePage.png":
 {
-	"frame": {"x":768,"y":620,"w":1024,"h":600},
+	"frame": {"x":890,"y":620,"w":1024,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":600},
@@ -146,7 +154,7 @@
 },
 "halo.png":
 {
-	"frame": {"x":1792,"y":620,"w":68,"h":68},
+	"frame": {"x":0,"y":1220,"w":68,"h":68},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":68},
@@ -154,7 +162,7 @@
 },
 "newGameButton_gamePage.png":
 {
-	"frame": {"x":0,"y":1220,"w":140,"h":76},
+	"frame": {"x":68,"y":1220,"w":140,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":76},
@@ -162,7 +170,7 @@
 },
 "newGameButton_resultChartPage.png":
 {
-	"frame": {"x":140,"y":1220,"w":112,"h":61},
+	"frame": {"x":208,"y":1220,"w":112,"h":61},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":61},
@@ -170,7 +178,7 @@
 },
 "pawn.png":
 {
-	"frame": {"x":252,"y":1220,"w":56,"h":56},
+	"frame": {"x":320,"y":1220,"w":56,"h":56},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
@@ -178,7 +186,7 @@
 },
 "pawnHover.png":
 {
-	"frame": {"x":308,"y":1220,"w":114,"h":68},
+	"frame": {"x":376,"y":1220,"w":114,"h":68},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":68},
@@ -186,7 +194,7 @@
 },
 "playButton_homePage.png":
 {
-	"frame": {"x":422,"y":1220,"w":147,"h":49},
+	"frame": {"x":490,"y":1220,"w":147,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":147,"h":49},
@@ -194,7 +202,7 @@
 },
 "playButton_homePage_hover.png":
 {
-	"frame": {"x":569,"y":1220,"w":147,"h":49},
+	"frame": {"x":637,"y":1220,"w":147,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":147,"h":49},
@@ -202,7 +210,7 @@
 },
 "resultChartButton_gamePage.png":
 {
-	"frame": {"x":716,"y":1220,"w":140,"h":76},
+	"frame": {"x":784,"y":1220,"w":140,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":76},
@@ -215,6 +223,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1930,"h":1296},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:bce38c49d4c1af9739ea6dec1cc5d22d:85e3be276fa89ccd92667d6b98e207f5:5b04aa198265472a3c5f56958d78e97b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:31167d3e16b189445789027ba8e6d514:0f84428ca3e112b52d4929b86bebb0d0:5b04aa198265472a3c5f56958d78e97b$"
 }
 }

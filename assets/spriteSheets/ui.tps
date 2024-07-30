@@ -219,6 +219,7 @@
                 <false/>
             </struct>
             <key type="filename">../images/buttons/backButton_creditsPage.png</key>
+            <key type="filename">../images/buttons/backButton_creditsPage_hover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
