@@ -1,5 +1,5 @@
 import { Assets, Sprite } from 'pixi.js';
-import { BaseButton } from '../../components/button/BaseButton';
+import { Button } from '../../components/button/Button';
 import { Page } from '../Page';
 import { BgTextures, Bundles, GameAssets } from '../../../App.types';
 import { Events } from '../../../common/Events';
@@ -11,7 +11,7 @@ import { PageIds } from '../Page.types';
  */
 export class CreditsPage extends Page {
     private background: Sprite;
-    private backCTA: BaseButton;
+    private backCTA: Button;
 
     public constructor() {
         console.log('CreditsPage().constructor()');
@@ -55,7 +55,7 @@ export class CreditsPage extends Page {
             hover: uiTextures[CreditsPageStyles.backCTA.backgroundHover],
         }
 
-        this.backCTA = new BaseButton(backCTA_setup);
+        this.backCTA = new Button(backCTA_setup);
         this.backCTA.position = CreditsPageStyles.backCTA.position;
         this.backCTA.on(Events.MOUSE_CLICK, this.onbackCTASelected);
         this.addChild(this.backCTA);

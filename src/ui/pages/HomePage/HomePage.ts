@@ -1,5 +1,5 @@
 import { Assets, Sprite } from 'pixi.js';
-import { BaseButton } from '../../components/button/BaseButton';
+import { Button } from '../../components/button/Button';
 import { Page } from '../Page';
 import { Bundles, GameAssets } from '../../../App.types';
 import { Events } from '../../../common/Events';
@@ -12,8 +12,8 @@ import { PageIds } from '../Page.types';
  */
 export class HomePage extends Page {
     private background: Sprite;
-    private creditsCTA: BaseButton;
-    private playCTA: BaseButton;
+    private creditsCTA: Button;
+    private playCTA: Button;
 
     public constructor() {
         console.log('HomePage().constructor()');
@@ -58,7 +58,7 @@ export class HomePage extends Page {
             hover: uiTextures[HomePageStyles.creditsCTA.backgroundHover],
         }
 
-        this.creditsCTA = new BaseButton(creditsCTA_setup, creditsCTA_hitArea);
+        this.creditsCTA = new Button(creditsCTA_setup, creditsCTA_hitArea);
         this.creditsCTA.on(Events.MOUSE_CLICK, this.onCreditsCTASelected);
         this.addChild(this.creditsCTA);
 
@@ -68,7 +68,7 @@ export class HomePage extends Page {
             hover: uiTextures[HomePageStyles.playCTA.backgroundHover],
         }
 
-        this.playCTA = new BaseButton(playCTA_setup);
+        this.playCTA = new Button(playCTA_setup);
         this.playCTA.position = HomePageStyles.playCTA.position;
         this.playCTA.on(Events.MOUSE_CLICK, this.onPlayCTASelected);
         this.addChild(this.playCTA);
