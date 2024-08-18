@@ -1,14 +1,14 @@
 import { Application } from "pixi.js";
-import { BasePage } from "./BasePage";
+import { Page } from "./Page";
 
 /**
  * The controller class to manage the page navigation.
  */
 export class PageManager {
     private app: Application;
-    private currentPage: BasePage;
+    private currentPage: Page;
     private currentPageIndex: number = -1;
-    private pages: Array<BasePage> = [];
+    private pages: Array<Page> = [];
 
     /**
      * 
@@ -21,10 +21,10 @@ export class PageManager {
 
     /**
      * 
-     * @param {BasePage} page - Page to be added to the stage.
+     * @param {Page} page - Page to be added to the stage.
      * @param {boolean} isPopup - Flag to stack or replace the new page.
      */
-    public addPage(page: BasePage, isPopup: boolean = false) {
+    public addPage(page: Page, isPopup: boolean = false) {
         console.log('PageManager().addPage() || page', page);
 
         if (!isPopup) {

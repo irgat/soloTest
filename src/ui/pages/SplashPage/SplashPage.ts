@@ -1,6 +1,6 @@
 import { AppConfig } from '../../../common/AppConfig';
 import { Assets, Sprite, Text } from 'pixi.js';
-import { BasePage } from '../BasePage';
+import { Page } from '../Page';
 import { Bundles } from '../../../App.types';
 import { Events } from '../../../common/Events';
 import { FontStyle } from '../../../common/Fonts';
@@ -9,7 +9,7 @@ import { PageIds } from '../Page.types';
 /**
  * The initial page that is displayed until the asset bundles are loaded. Progress information is represented by a preloader.
  */
-export class SplashPage extends BasePage {
+export class SplashPage extends Page {
     private background: Sprite;
     private progressLabel: Text;
 

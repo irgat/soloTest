@@ -1,6 +1,6 @@
 import { Assets, Sprite } from 'pixi.js';
 import { BaseButton } from '../../components/button/BaseButton';
-import { BasePage } from '../BasePage';
+import { Page } from '../Page';
 import { BgTextures, Bundles, GameAssets } from '../../../App.types';
 import { Events } from '../../../common/Events';
 import { CreditsPageStyles } from './CreditsPage.styles';
@@ -9,7 +9,7 @@ import { PageIds } from '../Page.types';
 /**
  * 
  */
-export class CreditsPage extends BasePage {
+export class CreditsPage extends Page {
     private background: Sprite;
     private backCTA: BaseButton;
 
