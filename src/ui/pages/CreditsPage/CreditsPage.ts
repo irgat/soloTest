@@ -1,10 +1,9 @@
-import { Assets, Sprite } from 'pixi.js';
 import { Button } from '../../components/button/Button';
-import { Page } from '../Page';
-import { BgTextures, Bundles, GameAssets } from '../../../App.types';
-import { Events } from '../../../common/Events';
 import { CreditsPageStyles } from './CreditsPage.styles';
+import { Events } from '../../../common/Events';
+import { Page } from '../Page';
 import { PageIds } from '../Page.types';
+import { Sprite } from 'pixi.js';
 
 /**
  * 
@@ -21,38 +20,20 @@ export class CreditsPage extends Page {
     }
 
     private init = async () => {
-        console.log('CreditsPage().init()');
-
-        await this.initPage();
+        await this.loadAssets("");
     }
 
-    private initPage = async () => {
+    protected override initPage = () => {
         console.log('CreditsPage().initPage()');
 
-        // set textures
-        const textures = await Assets.loadBundle(Bundles.GameAssets);
-
-        if (!textures) {
-            console.log('Failed to load texture');
-        }
-
-        console.log('CreditsPage().init() || textures = ', textures);
-
-        const bgTextures = textures[GameAssets.bg].textures;
-        const uiTextures = textures[GameAssets.ui].textures;
-
-        if (!bgTextures || !uiTextures) {
-            console.log('Failed to load BG and/or UI texture/s');
-        }
-
         // create background
-        this.background = new Sprite(bgTextures[BgTextures.creditsPage]);
+        this.background = new Sprite(this.bgTextures[CreditsPageStyles.background]);
         this.addChild(this.background);
 
         // create back CTA
         const backCTA_setup = {
-            default: uiTextures[CreditsPageStyles.backCTA.background],
-            hover: uiTextures[CreditsPageStyles.backCTA.backgroundHover],
+            default: this.uiTextures[CreditsPageStyles.backCTA.background],
+            hover: this.uiTextures[CreditsPageStyles.backCTA.backgroundHover],
         }
 
         this.backCTA = new Button(backCTA_setup);
