@@ -20,7 +20,7 @@ export class CreditsPage extends Page {
     }
 
     private init = async () => {
-        await this.loadAssets("");
+        await this.loadAssets('');
     }
 
     protected override initPage = () => {
@@ -38,11 +38,11 @@ export class CreditsPage extends Page {
 
         this.backCTA = new Button(backCTA_setup);
         this.backCTA.position = CreditsPageStyles.backCTA.position;
-        this.backCTA.on(Events.MOUSE_CLICK, this.onbackCTASelected);
+        this.backCTA.on(Events.MOUSE_CLICK, this.onBackCTASelected);
         this.addChild(this.backCTA);
     }
 
-    private onbackCTASelected = () => {
+    private onBackCTASelected = () => {
         this.backCTA.interactive = false;
         this.emit(Events.SELECTED, PageIds.HomePage);
     }
