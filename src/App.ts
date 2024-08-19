@@ -3,7 +3,8 @@ import { Application, ApplicationOptions } from "pixi.js";
 import { Config } from "./App.types";
 import { DEFAULT_MANIFEST } from "./App.consts";
 import { Events } from "./common/Events";
-import { SplashPage } from "./ui/pages/SplashPage";
+import { PageManager } from "./ui/pages/PageManager";
+import { SplashPage } from "./ui/pages/SplashPage/SplashPage";
 
 /**
  * The entry point.
@@ -12,6 +13,7 @@ import { SplashPage } from "./ui/pages/SplashPage";
  */
 class App {
     private app: Application;
+    private pageManager: PageManager;
 
     /**
      * 
@@ -34,6 +36,9 @@ class App {
         console.log('App().init()');
 
         await this.initApp(config.settings);
+
+        this.pageManager = new PageManager(this.app);
+
         await this.initPreloader(config.manifest);
     }
 
@@ -61,8 +66,9 @@ class App {
         console.log('App().initPreloader()');
 
         const splash = new SplashPage(url);
-        splash.on(Events.LOADED, this.onLoaded);
-        this.app.stage.addChild(splash);
+
+        splash.on(Events.LOADED, this.onLoaded, this);
+        this.pageManager.addPage(splash);
     }
 
     private onLoaded() {
