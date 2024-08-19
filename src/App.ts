@@ -1,9 +1,13 @@
 import { AppConfig } from "./common/AppConfig";
 import { Application, ApplicationOptions } from "pixi.js";
 import { Config } from "./App.types";
+import { CreditsPage } from "./ui/pages/CreditsPage/CreditsPage";
 import { DEFAULT_MANIFEST } from "./App.consts";
 import { Events } from "./common/Events";
-import { SplashPage } from "./ui/pages/SplashPage";
+import { HomePage } from "./ui/pages/HomePage/HomePage";
+import { PageId, PageIds } from "./ui/pages/Page.types";
+import { PageManager } from "./ui/pages/PageManager";
+import { SplashPage } from "./ui/pages/SplashPage/SplashPage";
 
 /**
  * The entry point.
@@ -12,6 +16,7 @@ import { SplashPage } from "./ui/pages/SplashPage";
  */
 class App {
     private app: Application;
+    private pageManager: PageManager;
 
     /**
      * 
@@ -34,6 +39,9 @@ class App {
         console.log('App().init()');
 
         await this.initApp(config.settings);
+
+        this.pageManager = new PageManager(this.app);
+
         await this.initPreloader(config.manifest);
     }
 
@@ -61,12 +69,33 @@ class App {
         console.log('App().initPreloader()');
 
         const splash = new SplashPage(url);
-        splash.on(Events.LOADED, this.onLoaded);
-        this.app.stage.addChild(splash);
+
+        splash.on(Events.LOADED, this.onLoaded, this);
+        this.pageManager.addPage(splash);
     }
 
     private onLoaded() {
         console.log('App().onLoaded()');
+        console.log('App().onLoaded() || ', this);
+        console.log('App().onLoaded() || ', arguments[0]);
+
+        this.showPage(PageIds.HomePage);
+    }
+
+    private showPage(pageId: PageId) {
+        console.log('App().showPage() || ', pageId);
+
+        if (pageId === PageIds.HomePage) {
+            const homePage = new HomePage();
+
+            homePage.on(Events.SELECTED, this.showPage, this);
+            this.pageManager.addPage(homePage);
+        } else if (pageId === PageIds.CreditsPage) {
+            const creditsPage = new CreditsPage();
+
+            creditsPage.on(Events.SELECTED, this.showPage, this);
+            this.pageManager.addPage(creditsPage);
+        }
     }
 }
 
