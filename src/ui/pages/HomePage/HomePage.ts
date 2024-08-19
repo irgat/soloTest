@@ -1,6 +1,6 @@
 import { Assets, Sprite } from 'pixi.js';
 import { BaseButton } from '../../components/button/BaseButton';
-import { BasePage } from '../BasePage';
+import { Page } from '../Page';
 import { Bundles, GameAssets } from '../../../App.types';
 import { Events } from '../../../common/Events';
 import { HomePageStyles } from './HomePage.styles';
@@ -10,7 +10,7 @@ import { PageIds } from '../Page.types';
  * The main page of the app that has two CTAs;
  * [PLAY] starts the game and [CREDITS] navigates to the credits page.
  */
-export class HomePage extends BasePage {
+export class HomePage extends Page {
     private background: Sprite;
     private creditsCTA: BaseButton;
     private playCTA: BaseButton;
