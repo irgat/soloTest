@@ -47,6 +47,7 @@ export enum UiTextures {
     gameOverButton_gamePage = 'gameOverButton_gamePage.png',
     halo = 'halo.png',
     newGameButton_gamePage = 'newGameButton_gamePage.png',
+    newGameButton_gamePage_hover = 'newGameButton_gamePage_hover.png',
     newGameButton_resultChartPage = 'newGameButton_resultChartPage.png',
     pawn = 'pawn.png',
     pawnHover = 'pawnHover.png',
@@ -65,4 +66,5 @@ export enum UiTextures {
     px_transparent = '1px_transparent.png',
     px_white = '1px_white.png',
     resultChartButton_gamePage = 'resultChartButton_gamePage.png',
+    resultChartButton_gamePage_hover = 'resultChartButton_gamePage_hover.png',
 }

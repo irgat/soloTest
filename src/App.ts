@@ -3,9 +3,11 @@ import { Application, ApplicationOptions } from "pixi.js";
 import { Config } from "./App.types";
 import { DEFAULT_MANIFEST } from "./App.consts";
 import { Events } from "./common/Events";
+import { GamePage } from "./ui/pages/GamePage/GamePage";
 import { HomePage } from "./ui/pages/HomePage/HomePage";
 import { PageManager } from "./ui/pages/PageManager";
 import { SplashPage } from "./ui/pages/SplashPage/SplashPage";
+import { PageId, PageIds } from "./ui/pages/Page.types";
 
 /**
  * The entry point.
@@ -76,7 +78,23 @@ class App {
         console.log('App().onLoaded()');
         const homePage = new HomePage();
 
-        this.pageManager.addPage(homePage);
+        this.showPage(PageIds.HomePage);
+    }
+
+    private showPage(pageId: PageId) {
+        console.log('App().showPage() || ', pageId);
+
+        if (pageId === PageIds.HomePage) {
+            const homePage = new HomePage();
+
+            homePage.on(Events.SELECTED, this.showPage, this);
+            this.pageManager.addPage(homePage);
+        } else if (pageId === PageIds.GamePage) {
+            const gamePage = new GamePage();
+
+            gamePage.on(Events.SELECTED, this.showPage, this);
+            this.pageManager.addPage(gamePage);
+        }
     }
 }
 

@@ -160,9 +160,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":76},
 	"sourceSize": {"w":140,"h":76}
 },
+"newGameButton_gamePage_hover.png":
+{
+	"frame": {"x":140,"y":1220,"w":140,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":76},
+	"sourceSize": {"w":140,"h":76}
+},
 "newGameButton_resultChartPage.png":
 {
-	"frame": {"x":140,"y":1220,"w":112,"h":61},
+	"frame": {"x":280,"y":1220,"w":112,"h":61},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":61},
@@ -170,7 +178,7 @@
 },
 "pawn.png":
 {
-	"frame": {"x":252,"y":1220,"w":56,"h":56},
+	"frame": {"x":392,"y":1220,"w":56,"h":56},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
@@ -178,7 +186,7 @@
 },
 "pawnHover.png":
 {
-	"frame": {"x":308,"y":1220,"w":114,"h":68},
+	"frame": {"x":448,"y":1220,"w":114,"h":68},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":68},
@@ -186,7 +194,7 @@
 },
 "playButton_homePage.png":
 {
-	"frame": {"x":422,"y":1220,"w":147,"h":49},
+	"frame": {"x":562,"y":1220,"w":147,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":147,"h":49},
@@ -194,7 +202,7 @@
 },
 "playButton_homePage_hover.png":
 {
-	"frame": {"x":569,"y":1220,"w":147,"h":49},
+	"frame": {"x":709,"y":1220,"w":147,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":147,"h":49},
@@ -202,7 +210,15 @@
 },
 "resultChartButton_gamePage.png":
 {
-	"frame": {"x":716,"y":1220,"w":140,"h":76},
+	"frame": {"x":856,"y":1220,"w":140,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":76},
+	"sourceSize": {"w":140,"h":76}
+},
+"resultChartButton_gamePage_hover.png":
+{
+	"frame": {"x":996,"y":1220,"w":140,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":140,"h":76},
@@ -215,6 +231,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1930,"h":1296},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:bce38c49d4c1af9739ea6dec1cc5d22d:85e3be276fa89ccd92667d6b98e207f5:5b04aa198265472a3c5f56958d78e97b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:df69cbb68fa83b03871d606d927f7fae:0d6cbc4282bd7b258cd4c69de201e56c:5b04aa198265472a3c5f56958d78e97b$"
 }
 }

@@ -282,7 +282,9 @@
                 <false/>
             </struct>
             <key type="filename">../images/buttons/newGameButton_gamePage.png</key>
+            <key type="filename">../images/buttons/newGameButton_gamePage_hover.png</key>
             <key type="filename">../images/buttons/resultChartButton_gamePage.png</key>
+            <key type="filename">../images/buttons/resultChartButton_gamePage_hover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
