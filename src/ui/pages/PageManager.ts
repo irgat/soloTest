@@ -1,14 +1,14 @@
 import { Application } from "pixi.js";
 import { Page } from "./Page";
+import { PageId } from "./Page.types";
 
 /**
  * The controller class to manage the page navigation.
  */
 export class PageManager {
     private app: Application;
-    private currentPage: Page;
-    private currentPageIndex: number = -1;
-    private pages: Array<Page> = [];
+    private currentPage?: Page;
+    private pages: { [key: string]: Page } = {};
 
     /**
      * 
@@ -22,48 +22,58 @@ export class PageManager {
     /**
      * 
      * @param {Page} page - Page to be added to the stage.
-     * @param {boolean} isPopup - Flag to stack or replace the new page.
+     * @param {boolean} addToHistory - Flag to stack or replace the new page.
      */
-    public addPage(page: Page, isPopup: boolean = false) {
+    public addPage(page: Page, addToHistory: boolean = false) {
         console.log('PageManager().addPage() || page', page);
+        console.log('PageManager().addPage() || addToHistory', addToHistory);
 
-        if (!isPopup) {
-            this.removeTheTopMostPage();
+        if (!addToHistory && this.currentPage) {
+            this.removePage(this.currentPage);
         }
 
-        this.pages.push(page);
         this.app.stage.addChild(page);
-        this.currentPage = page;
-        this.currentPageIndex = this.pages.length - 1;
+        this.currentPage = page
+        this.pages[page.pageId] = page;
 
         console.log('PageManager().addPage() || this.currentPage', this.currentPage);
-        console.log('PageManager().addPage() || this.currentPageIndex', this.currentPageIndex);
     }
 
     /**
      * 
-    */
-    public removeTheTopMostPage() {
-        console.log('PageManager().removeTheTopMostPage()');
-
-        this.removePageByIndex(this.app.stage.children.length - 1);
-    }
-
-    /**
-     * 
-     * @param {number} index - Page index to be removed from the stage.
+     * @param {Page} page - Page to be removed from the stage.
      */
-    public removePageByIndex(index: number) {
-        console.log('PageManager().removePageByIndex() || index', index);
+    public removePage(page: Page) {
+        console.log('PageManager().removePage() || page', page);
+        console.log('PageManager().removePage() || this.pages', this.pages);
 
-        if (index < 0) return;
+        if (this.pages.hasOwnProperty(page.pageId)) {
+            // remove the page from stage
+            this.app.stage.removeChild(page);
+            // remove the page reference
+            delete this.pages[page.pageId];
+        }
 
-        this.app.stage.removeChildAt(index);
-        this.pages.splice(index, 1);
-        this.currentPageIndex = this.app.stage.children.length - 1;
-        this.currentPage = this.pages[this.currentPageIndex];
+        console.log('PageManager().removePage() || this.app.stage.children.length', this.app.stage.children.length);
 
-        console.log('PageManager().removePageByIndex() || this.currentPage', this.currentPage);
-        console.log('PageManager().removePageByIndex() || this.currentPageIndex', this.currentPageIndex);
+        if (this.app.stage.children.length > 0) {
+            this.currentPage = this.app.stage.getChildAt(this.app.stage.children.length - 1) as Page;
+        } else {
+            this.currentPage = undefined;
+        }
+
+        console.log('PageManager().removePage() || this.pages', this.pages);
+    }
+
+    /**
+     * 
+     * @param {PageId} pageId - Page to be removed from the stage.
+     */
+    public removePageById(pageId: PageId) {
+        console.log('PageManager().removePageById() || pageId', pageId);
+
+        if (this.pages.hasOwnProperty(pageId)) {
+            this.removePage(this.pages[pageId]);
+        }
     }
 }
