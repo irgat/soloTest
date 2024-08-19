@@ -24,7 +24,7 @@ export class HomePage extends Page {
     private init = async () => {
         console.log('HomePage().init()');
 
-        await this.loadAssets("");
+        await this.loadAssets('');
     }
 
     protected override initPage = () => {
