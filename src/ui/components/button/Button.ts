@@ -1,5 +1,5 @@
 import { Container, Polygon, Sprite, Texture } from "pixi.js";
-import { ButtonBackground, ButtonState, ButtonStates, Cursor } from "./BaseButton.types";
+import { ButtonBackground, ButtonState, ButtonStates, Cursor } from "./Button.types";
 import { Events } from "../../../common/Events";
 
 /**
@@ -7,7 +7,7 @@ import { Events } from "../../../common/Events";
  * 
  * The constructor expects a background texture to initialise the component, also accepts two optional parameters.
  */
-export class BaseButton extends Container {
+export class Button extends Container {
     private _bgTexture: Texture | ButtonBackground;
 
     private background: Sprite;
@@ -20,9 +20,9 @@ export class BaseButton extends Container {
      * @param {ButtonState} [initialState] - Optional button state
      */
     public constructor(bgTexture: Texture | ButtonBackground, hitArea?: Polygon, initialState?: ButtonState) {
-        console.log('BaseButton().constructor() || bgTexture = ', bgTexture);
-        console.log('BaseButton().constructor() || hitArea = ', hitArea);
-        console.log('BaseButton().constructor() || initialState = ', initialState);
+        console.log('Button().constructor() || bgTexture = ', bgTexture);
+        console.log('Button().constructor() || hitArea = ', hitArea);
+        console.log('Button().constructor() || initialState = ', initialState);
 
         super();
 
@@ -46,13 +46,13 @@ export class BaseButton extends Container {
     }
 
     private onMouseOut = () => {
-        console.log('BaseButton().onMouseOut()');
+        console.log('Button().onMouseOut()');
 
         this.updateState(ButtonStates.Default);
     }
 
     private onMouseOver = () => {
-        console.log('BaseButton().onMouseOver()');
+        console.log('Button().onMouseOver()');
 
         this.updateState(ButtonStates.Hover);
     }
@@ -62,8 +62,8 @@ export class BaseButton extends Container {
      * @param {ButtonState} state - Button state
      */
     private updateState = (state: ButtonState) => {
-        console.log('BaseButton().updateState() || state = ', state);
-        console.log('BaseButton().updateState() || this.state = ', this.state);
+        console.log('Button().updateState() || state = ', state);
+        console.log('Button().updateState() || this.state = ', this.state);
 
         // check if the state has changed
         if (this.state === state) return;
@@ -74,14 +74,14 @@ export class BaseButton extends Container {
     }
 
     private updateBackground = () => {
-        console.log('BaseButton().updateBackground() || this.background = ', this.background);
+        console.log('Button().updateBackground() || this.background = ', this.background);
 
         if (this.background) {
             this.removeChild(this.background);
         }
 
-        console.log('BaseButton().updateBackground() || this.state = ', this.state);
-        console.log('BaseButton().updateBackground() || this.bgTexture = ', this.bgTexture);
+        console.log('Button().updateBackground() || this.state = ', this.state);
+        console.log('Button().updateBackground() || this.bgTexture = ', this.bgTexture);
 
         this.background = new Sprite(this.bgTexture);
         this.addChildAt(this.background, 0);
