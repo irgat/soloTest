@@ -1,5 +1,5 @@
-import { Container, Polygon, Sprite, Texture } from "pixi.js";
 import { ButtonBackground, ButtonState, ButtonStates, Cursor } from "./Button.types";
+import { Container, Polygon, Sprite, Texture } from "pixi.js";
 import { Events } from "../../../common/Events";
 
 /**
