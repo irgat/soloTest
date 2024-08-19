@@ -1,7 +1,8 @@
 import { BgTextures, UiTextures } from "../../../App.types";
+import { HomePageTypes } from "./HomePage.types";
 import { Point, Polygon } from "pixi.js";
 
-export const HomePageStyles = {
+export const HomePageStyles: HomePageTypes = {
     background: BgTextures.homePage,
     creditsCTA: {
         background: UiTextures.creditsButton_homePage,
