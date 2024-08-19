@@ -1,10 +1,9 @@
-import { Assets, Sprite } from 'pixi.js';
 import { Button } from '../../components/button/Button';
-import { Page } from '../Page';
-import { Bundles, GameAssets } from '../../../App.types';
 import { Events } from '../../../common/Events';
 import { HomePageStyles } from './HomePage.styles';
+import { Page } from '../Page';
 import { PageIds } from '../Page.types';
+import { Sprite } from 'pixi.js';
 
 /**
  * The main page of the app that has two CTAs;
@@ -25,37 +24,21 @@ export class HomePage extends Page {
     private init = async () => {
         console.log('HomePage().init()');
 
-        await this.initPage();
+        await this.loadAssets("");
     }
 
-    private initPage = async () => {
+    protected override initPage = () => {
         console.log('HomePage().initPage()');
 
-        // set textures
-        const textures = await Assets.loadBundle(Bundles.GameAssets);
-
-        if (!textures) {
-            console.log('Failed to load texture');
-        }
-
-        console.log('HomePage().init() || textures = ', textures);
-
-        const bgTextures = textures[GameAssets.bg].textures;
-        const uiTextures = textures[GameAssets.ui].textures;
-
-        if (!bgTextures || !uiTextures) {
-            console.log('Failed to load BG and/or UI texture/s');
-        }
-
         // create background
-        this.background = new Sprite(bgTextures[HomePageStyles.background]);
+        this.background = new Sprite(this.bgTextures[HomePageStyles.background]);
         this.addChild(this.background);
 
         // create credits CTA
         const creditsCTA_hitArea = HomePageStyles.creditsCTA.hitArea;
         const creditsCTA_setup = {
-            default: uiTextures[HomePageStyles.creditsCTA.background],
-            hover: uiTextures[HomePageStyles.creditsCTA.backgroundHover],
+            default: this.uiTextures[HomePageStyles.creditsCTA.background],
+            hover: this.uiTextures[HomePageStyles.creditsCTA.backgroundHover],
         }
 
         this.creditsCTA = new Button(creditsCTA_setup, creditsCTA_hitArea);
@@ -64,8 +47,8 @@ export class HomePage extends Page {
 
         // create play CTA
         const playCTA_setup = {
-            default: uiTextures[HomePageStyles.playCTA.background],
-            hover: uiTextures[HomePageStyles.playCTA.backgroundHover],
+            default: this.uiTextures[HomePageStyles.playCTA.background],
+            hover: this.uiTextures[HomePageStyles.playCTA.backgroundHover],
         }
 
         this.playCTA = new Button(playCTA_setup);

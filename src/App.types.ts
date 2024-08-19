@@ -1,8 +1,13 @@
-import { ApplicationOptions } from "pixi.js";
+import { ApplicationOptions, Spritesheet } from "pixi.js";
 
 export interface Config {
     manifest: string,
     settings: Partial<ApplicationOptions>,
+}
+
+export interface Textures {
+    bg: Spritesheet,
+    ui: Spritesheet,
 }
 
 // manifest.json

@@ -1,9 +1,9 @@
 import { AppConfig } from '../../../common/AppConfig';
 import { Assets, Sprite, Text } from 'pixi.js';
-import { Page } from '../Page';
 import { Bundles } from '../../../App.types';
 import { Events } from '../../../common/Events';
 import { FontStyle } from '../../../common/Fonts';
+import { Page } from '../Page';
 import { PageIds } from '../Page.types';
 
 /**
@@ -55,7 +55,7 @@ export class SplashPage extends Page {
      * 
      * @param {string} url - URL to manifest
      */
-    private loadAssets = async (url: string) => {
+    protected override loadAssets = async (url: string) => {
         console.log('SplashPage().loadAssets()');
 
         await Assets.init({ manifest: url });
